@@ -20,7 +20,7 @@ you will have to return inovice number,date,buyer's address,item name,quantity,r
 
 # Streamlit UI
 st.set_page_config(page_title="Gemini Invoice Analyzer")
-st.title("🧾 Gemini Invoice Analyzer")
+st.title("🧾 Invoice Analyzer")
 
 uploaded_file = st.file_uploader("📤 Upload an invoice image", type=["jpg", "jpeg", "png"])
 
