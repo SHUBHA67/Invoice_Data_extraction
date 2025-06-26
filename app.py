@@ -87,7 +87,7 @@ if uploaded_file:
 
         with open(csv_path, "rb") as f:
             st.download_button("📥 Download Q&A as CSV", f, file_name="invoice_response.csv", mime="text/csv")
-                summary_csv_path = "invoice_summary.csv"
+        summary_csv_path = "invoice_summary.csv"
         df_summary.to_csv(summary_csv_path, index=False)
 
         st.write(summary)
