@@ -88,5 +88,5 @@ if uploaded_file:
             with open(csv_path, "rb") as f:
                 st.download_button("📥 Download Q&A as CSV", f, file_name="invoice_response.csv", mime="text/csv")
       
-        elif ask_button and not user_prompt:
+        elif st.button("Ask_button") and not user_prompt:
             st.warning("⚠️ Please enter a question before clicking 'Ask Your Question'.")
