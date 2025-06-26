@@ -106,5 +106,5 @@ if uploaded_file:
             with open(summary_csv_path, "rb") as f:
                 st.download_button("📥 Download Summary as CSV", f, file_name="invoice_summary.csv", mime="text/csv")
     
-        elif ask_button and not user_prompt:
-            st.warning("⚠️ Please enter a question before clicking 'Ask Your Question'.")
+            elif ask_button and not user_prompt:
+                st.warning("⚠️ Please enter a question before clicking 'Ask Your Question'.")
