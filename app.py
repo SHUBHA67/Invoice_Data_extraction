@@ -74,37 +74,37 @@ if uploaded_file:
         with open(summary_csv_path, "rb") as f:
             st.download_button("📥 Download Summary as CSV", f, file_name="invoice_summary.csv", mime="text/csv")
 
-    if ask_button and user_prompt:
-        st.subheader("❓ Answer to Your Question")
-        answer = get_gemini_response(image_data, input_prompt, user_prompt)
-        st.write(answer)
-
-        # Save Q&A to CSV
-        structured_data = {"User Prompt": user_prompt, "Response": answer}
-        df = pd.DataFrame([structured_data])
-        csv_path = "invoice_response.csv"
-        df.to_csv(csv_path, index=False)
-
-        with open(csv_path, "rb") as f:
-            st.download_button("📥 Download Q&A as CSV", f, file_name="invoice_response.csv", mime="text/csv")
-        parsed_summary = {}
-        lines = summary.strip().split('\n')
-        for line in lines:
-            if ':' in line:
-                key, value = line.split(':', 1)
-                parsed_summary[key.strip()] = value.strip()
-
-        # Save to CSV (even if parsing fails)
-        if parsed_summary:
-            df_summary = pd.DataFrame([parsed_summary])
-        else:
-            df_summary = pd.DataFrame([{"Summary": summary}])
-        summary_csv_path = "invoice_summary.csv"
-        df_summary.to_csv(summary_csv_path, index=False)
-
-        st.write(parsed_summary)
-        with open(summary_csv_path, "rb") as f:
-            st.download_button("📥 Download Summary as CSV", f, file_name="invoice_summary.csv", mime="text/csv")
-
-    elif ask_button and not user_prompt:
-        st.warning("⚠️ Please enter a question before clicking 'Ask Your Question'.")
+        if ask_button and user_prompt:
+            st.subheader("❓ Answer to Your Question")
+            answer = get_gemini_response(image_data, input_prompt, user_prompt)
+            st.write(answer)
+    
+            # Save Q&A to CSV
+            structured_data = {"User Prompt": user_prompt, "Response": answer}
+            df = pd.DataFrame([structured_data])
+            csv_path = "invoice_response.csv"
+            df.to_csv(csv_path, index=False)
+    
+            with open(csv_path, "rb") as f:
+                st.download_button("📥 Download Q&A as CSV", f, file_name="invoice_response.csv", mime="text/csv")
+            parsed_summary = {}
+            lines = summary.strip().split('\n')
+            for line in lines:
+                if ':' in line:
+                    key, value = line.split(':', 1)
+                    parsed_summary[key.strip()] = value.strip()
+    
+            # Save to CSV (even if parsing fails)
+            if parsed_summary:
+                df_summary = pd.DataFrame([parsed_summary])
+            else:
+                df_summary = pd.DataFrame([{"Summary": summary}])
+            summary_csv_path = "invoice_summary.csv"
+            df_summary.to_csv(summary_csv_path, index=False)
+    
+            st.write(parsed_summary)
+            with open(summary_csv_path, "rb") as f:
+                st.download_button("📥 Download Summary as CSV", f, file_name="invoice_summary.csv", mime="text/csv")
+    
+        elif ask_button and not user_prompt:
+            st.warning("⚠️ Please enter a question before clicking 'Ask Your Question'.")
