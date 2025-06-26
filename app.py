@@ -25,7 +25,7 @@ st.title("🧾 Gemini Invoice Analyzer")
 uploaded_file = st.file_uploader("📤 Upload an invoice image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
-    st.image(Image.open(uploaded_file), caption="Uploaded Invoice", use_column_width=True)
+    st.image(Image.open(uploaded_file), caption="Uploaded Invoice", use_container_width=True)
 
 analyze_button = st.button("🧠 Analyze Invoice")
 
