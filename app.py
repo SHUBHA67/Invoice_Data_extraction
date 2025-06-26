@@ -86,7 +86,7 @@ if ask_button:
             st.info("ℹ️ Please analyze an invoice first to generate a summary.")
 
         st.subheader("❓ Answer to Your Question")
-        answer = get_gemini_response(image_data, input_prompt, user_prompt)
+        answer = get_gemini_response(image_data, user_prompt)
         st.write(answer)
 
         # Save Q&A
